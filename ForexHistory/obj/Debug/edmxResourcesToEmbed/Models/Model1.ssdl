@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForexHistoryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="date1" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="date2" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="cur1" Type="nchar" MaxLength="3" Nullable="false" />
+    <Property Name="cur2" Type="nchar" MaxLength="3" Nullable="false" />
+    <Property Name="amount" Type="float" Nullable="false" />
+    <Property Name="result" Type="float" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="surName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="eMailAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_history_member">
+    <End Role="member" Type="Self.member" Multiplicity="1" />
+    <End Role="history" Type="Self.history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="history">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ForexHistoryModelStoreContainer">
+    <EntitySet Name="history" EntityType="Self.history" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_history_member" Association="Self.FK_history_member">
+      <End Role="member" EntitySet="member" />
+      <End Role="history" EntitySet="history" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

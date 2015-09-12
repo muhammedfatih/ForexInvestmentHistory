@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+@section banner{
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <br />
+                <hr />
+                <center><h1 class="text-primary">Forex History Login</h1></center>
+                <hr />
+            </div>
+        </div>
+    </div>
+}
+@section featured{
+        <div class="loginmodal-container">
+            <h1>Login to Your Account</h1><br>
+            <p class="field-validation-error">@ViewBag.error</p>
+            <form method="post" action="/Member/Login">
+                <input type="text" name="eMailAddress" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            </form>
+
+            <div class="login-help">
+                @Html.ActionLink("Register", "Register", "Member")<br/>
+                @Html.ActionLink("Return to Home Page", "Index", "Home")
+            </div>
+        </div>
+}

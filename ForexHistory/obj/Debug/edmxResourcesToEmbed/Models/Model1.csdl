@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForexHistoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="eMailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="history1" Relationship="ForexHistoryModel.FK_history_member" FromRole="member" ToRole="history" />
+  </EntityType>
+  <EntityContainer Name="ForexHistoryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="member" EntityType="Self.member" />
+    <EntitySet Name="history" EntityType="ForexHistoryModel.history" />
+    <AssociationSet Name="FK_history_member" Association="ForexHistoryModel.FK_history_member">
+      <End Role="member" EntitySet="member" />
+      <End Role="history" EntitySet="history" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="history">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="date1" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="date2" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="cur1" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="cur2" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="amount" Type="Double" Nullable="false" />
+    <NavigationProperty Name="member1" Relationship="ForexHistoryModel.FK_history_member" FromRole="history" ToRole="member" />
+    <Property Name="result" Type="Double" />
+  </EntityType>
+  <Association Name="FK_history_member">
+    <End Type="ForexHistoryModel.member" Role="member" Multiplicity="1" />
+    <End Type="ForexHistoryModel.history" Role="history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="member">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="history">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

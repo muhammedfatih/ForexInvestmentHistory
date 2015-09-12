@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ForexHistory.Models.history>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cur1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cur2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cur1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cur2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.amount)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

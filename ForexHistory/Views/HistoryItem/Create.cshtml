@@ -1,0 +1,103 @@
+﻿@model ForexHistory.Models.history
+
+@{
+    ViewBag.Title = "Create";
+}
+@section banner{
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <br />
+                <hr />
+                <center><h1 class="text-primary">Forex History Dashboard</h1></center>
+                <hr />
+            </div>
+        </div>
+    </div>
+}
+@section featured{
+<div class="container-fluid">
+    <div class="col-md-3">
+        <div class="row-fluid">
+            <div class="">
+                <div class="well">
+                    <h3>Navigation</h3>
+                    <ul class="nav nav-list">
+                        <li>@Html.ActionLink("Index", "Index", "Home", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Dashboard", "Index", "Forex", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Investments", "Index", "HistoryItem", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Profile", "Profile", "Member", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Member", null, new { @class = "text-success" })</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="">
+                <div class="well">
+                    <h3>Latest Values</h3>
+                    <ul class="nav nav-list">
+                        <li>@ViewBag.cur1</li>
+                        <li>@ViewBag.cur2</li>
+                        <li>@ViewBag.cur3</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-9">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend class="text-primary">Create</legend>
+
+        <div class="text-info"><p><strong>First Date</strong></p></div>
+        <div class="text-info">
+            @Html.TextBoxFor(model => model.date1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.date1)
+        </div>
+
+        <div class="text-info"><p><strong>Second Date</strong></p></div>
+        <div class="text-info">
+            @Html.TextBoxFor(model => model.date2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.date2)
+        </div>
+
+        <div class="text-info"><p><strong>Current Currency</strong></p></div>
+        <div class="text-info">
+            @Html.TextBoxFor(model => model.cur1, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cur1)
+        </div>
+
+        <div class="text-info"><p><strong>Currency To Exchange</strong></p></div>
+        <div class="text-info">
+            @Html.TextBoxFor(model => model.cur2, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.cur2)
+        </div>
+
+        <div class="text-info"><p><strong>Current Amount</strong></p></div>
+        <div class="text-info">
+            @Html.TextBoxFor(model => model.amount, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.amount)
+        </div><br/>
+
+        <p>
+            <input type="submit" class="form-control btn btn-default" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

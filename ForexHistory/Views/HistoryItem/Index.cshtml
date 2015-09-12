@@ -1,0 +1,105 @@
+﻿@model IEnumerable<ForexHistory.Models.history>
+
+@{
+    ViewBag.Title = "Index";
+}
+@section banner{
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <br />
+                <hr />
+                <center><h1 class="text-primary">Forex History Dashboard</h1></center>
+                <hr />
+            </div>
+        </div>
+    </div>
+}
+@section featured{
+<div class="container-fluid">
+    <div class="col-md-3">
+        <div class="row-fluid">
+            <div class="">
+                <div class="well">
+                    <h3>Navigation</h3>
+                    <ul class="nav nav-list">
+                        <li>@Html.ActionLink("Index", "Index", "Home", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Dashboard", "Index", "Forex", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Investments", "Index", "HistoryItem", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Profile", "Profile", "Member", null, new { @class = "text-success" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Member", null, new { @class = "text-success" })</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="">
+                <div class="well">
+                    <h3>Latest Values</h3>
+                    <ul class="nav nav-list">
+                        <li>@ViewBag.cur1</li>
+                        <li>@ViewBag.cur2</li>
+                        <li>@ViewBag.cur3</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-9">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th class="text-info"><strong><p>First Date</p></strong></th>
+                <th class="text-info"><strong><p>Second Date</p></strong></th>
+                <th class="text-info"><strong><p>Current Currency</p></strong></th>
+                <th class="text-info"><strong><p>Currency To Exchange</p></strong></th>
+                <th class="text-info"><strong><p>Current Amount</p></strong></th>
+                <th class="text-info"><strong><p>Result</p></strong></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr class="">
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.date1)
+                    </td>
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.date2)
+                    </td>
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.cur1)
+                    </td>
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.cur2)
+                    </td>
+                    <td class="text-info">
+                        @Html.DisplayFor(modelItem => item.amount)
+                    </td>
+                    @if (item.amount > item.result)
+                    {
+                        <td class="text-danger">
+                            @Html.DisplayFor(modelItem => item.result)
+                        </td>
+                    }
+                    else
+                    {
+                    <td class="text-success">
+                        @Html.DisplayFor(modelItem => item.result)
+                    </td>
+                    }
+                    <td class="text-info">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    </div>
+}

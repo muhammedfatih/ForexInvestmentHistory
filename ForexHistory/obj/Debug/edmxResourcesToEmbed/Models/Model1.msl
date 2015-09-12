@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ForexHistoryModelStoreContainer" CdmEntityContainer="ForexHistoryEntities">
+    <EntitySetMapping Name="member">
+      <EntityTypeMapping TypeName="ForexHistoryModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surName" ColumnName="surName" />
+          <ScalarProperty Name="eMailAddress" ColumnName="eMailAddress" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="history">
+      <EntityTypeMapping TypeName="ForexHistoryModel.history">
+        <MappingFragment StoreEntitySet="history">
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="cur2" ColumnName="cur2" />
+          <ScalarProperty Name="cur1" ColumnName="cur1" />
+          <ScalarProperty Name="date2" ColumnName="date2" />
+          <ScalarProperty Name="date1" ColumnName="date1" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

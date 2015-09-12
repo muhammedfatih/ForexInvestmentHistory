@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section featured{
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+@if (ViewBag.isLogin == false)
+{
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    @Html.ActionLink("Login", "Login", "Member", null, new { @class = "page-scroll" })
+                </li>
+                <li>
+                    @Html.ActionLink("Register", "Register", "Member", null, new { @class = "page-scroll" })
+                </li>
+}
+else
+{
+    <li class="hidden">
+        <a href="#page-top"></a>
+    </li>
+    <li>
+        @Html.ActionLink("Dashboard", "Index", "Forex", null, new { @class = "page-scroll" })
+    </li>
+    <li>
+        @Html.ActionLink("Logout", "Logout", "Member", null, new { @class = "page-scroll" })
+    </li>
+}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="intro-text">
+            <div class="intro-heading">I knew I should!</div>
+            <div class="intro-lead-in">Register and track your invesment during the time.</div>
+            @Html.ActionLink("Register Now!", "Register", "Member", null, new { @class = "page-scroll btn btn-xl" })
+        </div>
+    </div>
+</header>
+}

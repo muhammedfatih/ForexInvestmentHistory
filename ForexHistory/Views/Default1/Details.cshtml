@@ -1,0 +1,57 @@
+﻿@model ForexHistory.Models.history
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>history</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.userId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.userId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.date2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cur1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cur1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.cur2)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.cur2)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.amount)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
